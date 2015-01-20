@@ -2,19 +2,15 @@ import java.util.Scanner;
 
 public class PassingArguments
 	{
-	private static int feetInput;
-	private static double inchesInput, heightInInches, heightInCentimeters;
-	private static double heightInMeters, heightInFeet, inchesOutput;
-
 	public static void main(String[] args)
 		{
-		inputFeet();
-		inputInches();
-		convertToInches(feetInput, inchesInput);
-		convertToCentimeters(heightInInches);
-		convertToMeters(heightInCentimeters);
-		convertToFeet(heightInMeters);
-		convertToInches(heightInFeet);
+		int feetInput = inputFeet();
+		double inchesInput = inputInches();
+		double heightInInches = convertToInches(feetInput, inchesInput);
+		double heightInCentimeters = convertToCentimeters(heightInInches);
+		double heightInMeters = convertToMeters(heightInCentimeters);
+		double heightInFeet = convertToFeet(heightInMeters);
+		double inchesOutput = convertToInches(heightInFeet);
 		compare(inchesInput, inchesOutput);
 		}
 	
@@ -24,49 +20,47 @@ public class PassingArguments
 		System.out.println("Please input your height in feet and inches,"
 				+ " one at a time.");
 		System.out.println("How many feet tall are you?");
-		feetInput = userInput.nextInt();
-		return feetInput;
+		return userInput.nextInt();
 		}
 	
 	private static double inputInches()
 		{
 		Scanner userInput = new Scanner(System.in);
 		System.out.println("How many inches tall are you?");
-		inchesInput = userInput.nextDouble();
-		return inchesInput;
+		return userInput.nextDouble();
 		}
 	
-	private static double convertToInches(int feetInput, double inchesInput)
+	private static double convertToInches(int feet, double inches)
 		{
-		heightInInches = feetInput * 12 + inchesInput;
+		double heightInInches = feet * 12 + inches;
 		System.out.println("Your height in inches is " + heightInInches + "\".");
 		return heightInInches;
 		}
 	
-	private static double convertToCentimeters(double heightInInches)
+	private static double convertToCentimeters(double inches)
 		{
-		heightInCentimeters = heightInInches * 2.54;
+		double heightInCentimeters = inches * 2.54;
 		System.out.println("Your height in centimeters is " + heightInCentimeters + "cm.");
 		return heightInCentimeters; 
 		}
 	
-	private static double convertToMeters(double heightInCentimeters)
+	private static double convertToMeters(double centimeters)
 		{
-		heightInMeters = heightInCentimeters / 100;
+		double heightInMeters = centimeters / 100;
 		System.out.println("Your height in meters is " + heightInMeters + "m.");
 		return heightInMeters; 
 		}
 	
-	private static double convertToFeet(double heightInMeters)
+	private static double convertToFeet(double meters)
 		{
-		heightInFeet = heightInMeters * 3.28084;
+		double heightInFeet = meters * 3.28084;
 		System.out.println("Your height in feet is " + heightInFeet + "'.");
 		return heightInFeet; 
 		}
 	
-	private static double convertToInches(double heightInFeet)
+	private static double convertToInches(double feet)
 		{
-		inchesOutput = heightInFeet * 12;
+		double inchesOutput = feet * 12;
 		System.out.println("Your height in inches is " + inchesOutput + "\".");
 		return inchesOutput; 
 		}
